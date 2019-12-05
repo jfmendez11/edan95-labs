@@ -20,6 +20,7 @@ lab-04/glove.6B.100d.txt
 lab-04/output-lstm.txt
 lab-04/output-rnn.txt
 lab-04/.idea
+lab-05/__pycache__
 lab-05/.ipynb_checkpoints
 lab-05/MNIST_Light
 lab-05/Main_MNIST.py
