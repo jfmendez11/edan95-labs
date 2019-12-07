@@ -37,7 +37,7 @@ def cos_similarity(word, embeddings):
     return result, cos_sim
 
 
-BASE_DIR = '/Users/JuanFelipe/Documents/Universidad/10 Semestre - Intercambio/Applied Machine Learning/Labs/lab-04/'
+BASE_DIR = '/Users/JuanFelipe/GitHub/edan95-labs/lab-04/'
 
 
 def load_conll2003_en():
@@ -72,14 +72,14 @@ embedding_file = BASE_DIR + 'glove.6B.100d.txt'
 embeddings_d = load(embedding_file)
 
 print('Found', len(embeddings_d), 'word vectors.')
-'''
+
 print('Calculating for table')
 print(cos_similarity('table', embeddings_d))
 print('Calculating for france')
 print(cos_similarity('france', embeddings_d))
 print('Calculating for sweden')
 print(cos_similarity('sweden', embeddings_d))
-'''
+
 print()
 
 train_sentences, dev_sentences, test_sentences, column_names = load_conll2003_en()
@@ -163,7 +163,7 @@ print(Y_idx_pad_d[1])
 Y_pad_categorical_d = to_categorical(Y_idx_pad_d, num_classes=len(idx_ner))
 
 # ----------------------------------------------------------------------------------------------------------------------
-'''
+
 model = models.Sequential()
 model.add(layers.Embedding(len(vocabulary) + 2, 100, mask_zero=True, input_length=150))
 model.layers[0].set_weights([embedding_matrix])
@@ -174,7 +174,7 @@ model.compile(loss='categorical_crossentropy', optimizer='rmsprop', metrics=['ac
 model.summary()
 
 history_rnn = model.fit(X_idx_pad, Y_pad_categorical, batch_size=128, epochs=4, validation_data=(X_idx_pad_val, Y_pad_categorical_val))
-
+'''
 acc = history_rnn.history['acc']
 val_acc = history_rnn.history['val_acc']
 loss = history_rnn.history['loss']
@@ -195,7 +195,7 @@ plt.title('Training and validation loss')
 plt.legend()
 
 plt.show()
-
+'''
 test_loss_rnn, test_accuracy_rnn = model.evaluate(X_idx_pad_d, Y_pad_categorical_d)
 print('Loss:', test_loss_rnn, 'Accuracy:', test_accuracy_rnn)
 
@@ -228,7 +228,7 @@ for i in range(len(X_d)):
     output_rnn.write('\n')
 
 output_rnn.close()
-'''
+
 # ----------------------------------------------------------------------------------------------------------------------
 model2 = models.Sequential()
 model2.add(layers.Embedding(len(vocabulary) + 2, 100, mask_zero=True, input_length=150))
